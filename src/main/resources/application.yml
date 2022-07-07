@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: user-center
+  # DataSource Config
+  datasource:
+    driver-class-name: oracle
+    url: jdbc:oracle:thin:@//172.1.0.151:1521/racdb
+    username: test1
+    password: test11
+server:
+  port: 8080

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.FormfieldDao">
+  <resultMap id="BaseResultMap" type="generate.Formfield">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="FORMID" jdbcType="VARCHAR" property="formid" />
+    <result column="FIELDNAME" jdbcType="VARCHAR" property="fieldname" />
+    <result column="HTMLTYPE" jdbcType="DECIMAL" property="htmltype" />
+    <result column="FIELDTYPE" jdbcType="VARCHAR" property="fieldtype" />
+    <result column="FIELDATTR" jdbcType="VARCHAR" property="fieldattr" />
+    <result column="FIELDCHECK" jdbcType="VARCHAR" property="fieldcheck" />
+    <result column="LABELID" jdbcType="VARCHAR" property="labelid" />
+    <result column="LABELNAME" jdbcType="VARCHAR" property="labelname" />
+    <result column="ISDELETE" jdbcType="DECIMAL" property="isdelete" />
+    <result column="COL1" jdbcType="VARCHAR" property="col1" />
+    <result column="COL2" jdbcType="VARCHAR" property="col2" />
+    <result column="COL3" jdbcType="VARCHAR" property="col3" />
+    <result column="ISONLY" jdbcType="DECIMAL" property="isonly" />
+    <result column="NEEDLOG" jdbcType="DECIMAL" property="needlog" />
+    <result column="ISPROMPT" jdbcType="VARCHAR" property="isprompt" />
+    <result column="ISEXCEL" jdbcType="DECIMAL" property="isexcel" />
+    <result column="ISDEFAULT" jdbcType="DECIMAL" property="isdefault" />
+    <result column="ISMONEY" jdbcType="DECIMAL" property="ismoney" />
+    <result column="DOCDIR" jdbcType="VARCHAR" property="docdir" />
+    <result column="ORDERNUM" jdbcType="DECIMAL" property="ordernum" />
+    <result column="ISENCRYPTION" jdbcType="DECIMAL" property="isencryption" />
+    <result column="EXCELORDERNUM" jdbcType="DECIMAL" property="excelordernum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, FORMID, FIELDNAME, HTMLTYPE, FIELDTYPE, FIELDATTR, FIELDCHECK, LABELID, LABELNAME, 
+    ISDELETE, COL1, COL2, COL3, ISONLY, NEEDLOG, ISPROMPT, ISEXCEL, ISDEFAULT, ISMONEY, 
+    DOCDIR, ORDERNUM, ISENCRYPTION, EXCELORDERNUM
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from FORMFIELD
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FORMFIELD
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="generate.Formfield" useGeneratedKeys="true">
+    insert into FORMFIELD (FORMID, FIELDNAME, HTMLTYPE, 
+      FIELDTYPE, FIELDATTR, FIELDCHECK, 
+      LABELID, LABELNAME, ISDELETE, 
+      COL1, COL2, COL3, ISONLY, 
+      NEEDLOG, ISPROMPT, ISEXCEL, 
+      ISDEFAULT, ISMONEY, DOCDIR, 
+      ORDERNUM, ISENCRYPTION, EXCELORDERNUM
+      )
+    values (#{formid,jdbcType=VARCHAR}, #{fieldname,jdbcType=VARCHAR}, #{htmltype,jdbcType=DECIMAL}, 
+      #{fieldtype,jdbcType=VARCHAR}, #{fieldattr,jdbcType=VARCHAR}, #{fieldcheck,jdbcType=VARCHAR}, 
+      #{labelid,jdbcType=VARCHAR}, #{labelname,jdbcType=VARCHAR}, #{isdelete,jdbcType=DECIMAL}, 
+      #{col1,jdbcType=VARCHAR}, #{col2,jdbcType=VARCHAR}, #{col3,jdbcType=VARCHAR}, #{isonly,jdbcType=DECIMAL}, 
+      #{needlog,jdbcType=DECIMAL}, #{isprompt,jdbcType=VARCHAR}, #{isexcel,jdbcType=DECIMAL}, 
+      #{isdefault,jdbcType=DECIMAL}, #{ismoney,jdbcType=DECIMAL}, #{docdir,jdbcType=VARCHAR}, 
+      #{ordernum,jdbcType=DECIMAL}, #{isencryption,jdbcType=DECIMAL}, #{excelordernum,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="generate.Formfield" useGeneratedKeys="true">
+    insert into FORMFIELD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="formid != null">
+        FORMID,
+      </if>
+      <if test="fieldname != null">
+        FIELDNAME,
+      </if>
+      <if test="htmltype != null">
+        HTMLTYPE,
+      </if>
+      <if test="fieldtype != null">
+        FIELDTYPE,
+      </if>
+      <if test="fieldattr != null">
+        FIELDATTR,
+      </if>
+      <if test="fieldcheck != null">
+        FIELDCHECK,
+      </if>
+      <if test="labelid != null">
+        LABELID,
+      </if>
+      <if test="labelname != null">
+        LABELNAME,
+      </if>
+      <if test="isdelete != null">
+        ISDELETE,
+      </if>
+      <if test="col1 != null">
+        COL1,
+      </if>
+      <if test="col2 != null">
+        COL2,
+      </if>
+      <if test="col3 != null">
+        COL3,
+      </if>
+      <if test="isonly != null">
+        ISONLY,
+      </if>
+      <if test="needlog != null">
+        NEEDLOG,
+      </if>
+      <if test="isprompt != null">
+        ISPROMPT,
+      </if>
+      <if test="isexcel != null">
+        ISEXCEL,
+      </if>
+      <if test="isdefault != null">
+        ISDEFAULT,
+      </if>
+      <if test="ismoney != null">
+        ISMONEY,
+      </if>
+      <if test="docdir != null">
+        DOCDIR,
+      </if>
+      <if test="ordernum != null">
+        ORDERNUM,
+      </if>
+      <if test="isencryption != null">
+        ISENCRYPTION,
+      </if>
+      <if test="excelordernum != null">
+        EXCELORDERNUM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="formid != null">
+        #{formid,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldname != null">
+        #{fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="htmltype != null">
+        #{htmltype,jdbcType=DECIMAL},
+      </if>
+      <if test="fieldtype != null">
+        #{fieldtype,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldattr != null">
+        #{fieldattr,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldcheck != null">
+        #{fieldcheck,jdbcType=VARCHAR},
+      </if>
+      <if test="labelid != null">
+        #{labelid,jdbcType=VARCHAR},
+      </if>
+      <if test="labelname != null">
+        #{labelname,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=DECIMAL},
+      </if>
+      <if test="col1 != null">
+        #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null">
+        #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null">
+        #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="isonly != null">
+        #{isonly,jdbcType=DECIMAL},
+      </if>
+      <if test="needlog != null">
+        #{needlog,jdbcType=DECIMAL},
+      </if>
+      <if test="isprompt != null">
+        #{isprompt,jdbcType=VARCHAR},
+      </if>
+      <if test="isexcel != null">
+        #{isexcel,jdbcType=DECIMAL},
+      </if>
+      <if test="isdefault != null">
+        #{isdefault,jdbcType=DECIMAL},
+      </if>
+      <if test="ismoney != null">
+        #{ismoney,jdbcType=DECIMAL},
+      </if>
+      <if test="docdir != null">
+        #{docdir,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null">
+        #{ordernum,jdbcType=DECIMAL},
+      </if>
+      <if test="isencryption != null">
+        #{isencryption,jdbcType=DECIMAL},
+      </if>
+      <if test="excelordernum != null">
+        #{excelordernum,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generate.Formfield">
+    update FORMFIELD
+    <set>
+      <if test="formid != null">
+        FORMID = #{formid,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldname != null">
+        FIELDNAME = #{fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="htmltype != null">
+        HTMLTYPE = #{htmltype,jdbcType=DECIMAL},
+      </if>
+      <if test="fieldtype != null">
+        FIELDTYPE = #{fieldtype,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldattr != null">
+        FIELDATTR = #{fieldattr,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldcheck != null">
+        FIELDCHECK = #{fieldcheck,jdbcType=VARCHAR},
+      </if>
+      <if test="labelid != null">
+        LABELID = #{labelid,jdbcType=VARCHAR},
+      </if>
+      <if test="labelname != null">
+        LABELNAME = #{labelname,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null">
+        ISDELETE = #{isdelete,jdbcType=DECIMAL},
+      </if>
+      <if test="col1 != null">
+        COL1 = #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null">
+        COL2 = #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null">
+        COL3 = #{col3,jdbcType=VARCHAR},
+      </if>
+      <if test="isonly != null">
+        ISONLY = #{isonly,jdbcType=DECIMAL},
+      </if>
+      <if test="needlog != null">
+        NEEDLOG = #{needlog,jdbcType=DECIMAL},
+      </if>
+      <if test="isprompt != null">
+        ISPROMPT = #{isprompt,jdbcType=VARCHAR},
+      </if>
+      <if test="isexcel != null">
+        ISEXCEL = #{isexcel,jdbcType=DECIMAL},
+      </if>
+      <if test="isdefault != null">
+        ISDEFAULT = #{isdefault,jdbcType=DECIMAL},
+      </if>
+      <if test="ismoney != null">
+        ISMONEY = #{ismoney,jdbcType=DECIMAL},
+      </if>
+      <if test="docdir != null">
+        DOCDIR = #{docdir,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null">
+        ORDERNUM = #{ordernum,jdbcType=DECIMAL},
+      </if>
+      <if test="isencryption != null">
+        ISENCRYPTION = #{isencryption,jdbcType=DECIMAL},
+      </if>
+      <if test="excelordernum != null">
+        EXCELORDERNUM = #{excelordernum,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generate.Formfield">
+    update FORMFIELD
+    set FORMID = #{formid,jdbcType=VARCHAR},
+      FIELDNAME = #{fieldname,jdbcType=VARCHAR},
+      HTMLTYPE = #{htmltype,jdbcType=DECIMAL},
+      FIELDTYPE = #{fieldtype,jdbcType=VARCHAR},
+      FIELDATTR = #{fieldattr,jdbcType=VARCHAR},
+      FIELDCHECK = #{fieldcheck,jdbcType=VARCHAR},
+      LABELID = #{labelid,jdbcType=VARCHAR},
+      LABELNAME = #{labelname,jdbcType=VARCHAR},
+      ISDELETE = #{isdelete,jdbcType=DECIMAL},
+      COL1 = #{col1,jdbcType=VARCHAR},
+      COL2 = #{col2,jdbcType=VARCHAR},
+      COL3 = #{col3,jdbcType=VARCHAR},
+      ISONLY = #{isonly,jdbcType=DECIMAL},
+      NEEDLOG = #{needlog,jdbcType=DECIMAL},
+      ISPROMPT = #{isprompt,jdbcType=VARCHAR},
+      ISEXCEL = #{isexcel,jdbcType=DECIMAL},
+      ISDEFAULT = #{isdefault,jdbcType=DECIMAL},
+      ISMONEY = #{ismoney,jdbcType=DECIMAL},
+      DOCDIR = #{docdir,jdbcType=VARCHAR},
+      ORDERNUM = #{ordernum,jdbcType=DECIMAL},
+      ISENCRYPTION = #{isencryption,jdbcType=DECIMAL},
+      EXCELORDERNUM = #{excelordernum,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.LwTest01Dao">
+  <resultMap id="BaseResultMap" type="generate.LwTest01">
+    <result column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="COL1" jdbcType="VARCHAR" property="col1" />
+    <result column="COL2" jdbcType="VARCHAR" property="col2" />
+    <result column="COL3" jdbcType="VARCHAR" property="col3" />
+  </resultMap>
+  <insert id="insert" parameterType="generate.LwTest01">
+    insert into LW_TEST_01 (ID, COL1, COL2, 
+      COL3)
+    values (#{id,jdbcType=DECIMAL}, #{col1,jdbcType=VARCHAR}, #{col2,jdbcType=VARCHAR}, 
+      #{col3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="generate.LwTest01">
+    insert into LW_TEST_01
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="col1 != null">
+        COL1,
+      </if>
+      <if test="col2 != null">
+        COL2,
+      </if>
+      <if test="col3 != null">
+        COL3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="col1 != null">
+        #{col1,jdbcType=VARCHAR},
+      </if>
+      <if test="col2 != null">
+        #{col2,jdbcType=VARCHAR},
+      </if>
+      <if test="col3 != null">
+        #{col3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
